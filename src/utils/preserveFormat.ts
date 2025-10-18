@@ -66,7 +66,7 @@ export function preserveFormat({
   html = !ignoreTags.includes('a')
     ? html.replace(
         /<a\s+href="(.*?)".*?>(.*?)<\/a>/gi,
-        (_m, href: string, text: string) => `${text} (${href})`
+        (_m, href: string, text: string) => `[${text}](${href})`
       )
     : html;
 

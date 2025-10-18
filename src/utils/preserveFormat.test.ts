@@ -31,7 +31,7 @@ describe('preserveFormat', () => {
 
   it('should handle links', () => {
     const html = '<a href="https://example.com">Click here</a>';
-    const expected = 'Click here (https://example.com)';
+    const expected = '[Click here](https://example.com)';
     expect(preserveFormat({ html })).toBe(expected);
   });
 
@@ -119,7 +119,7 @@ describe('preserveFormat', () => {
 
     const result = preserveFormat({ html });
 
-    const expected = `Main Heading\n\nParagraph with **bold** and *italic* text\n\n- Item 1\n- Item 2\n1. First\n2. Second\nLink (https://link.com)> Quote line 1\n> Quote line 2A1	B1\nA2	B2`;
+    const expected = `Main Heading\n\nParagraph with **bold** and *italic* text\n\n- Item 1\n- Item 2\n1. First\n2. Second\n[Link](https://link.com)> Quote line 1\n> Quote line 2A1	B1\nA2	B2`;
     expect(result).toBe(expected);
   });
 });
