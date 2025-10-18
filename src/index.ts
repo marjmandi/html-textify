@@ -4,10 +4,10 @@ import { wrapByWords } from './utils/wrapByWords';
 
 export interface TextifyOptions {
   html: string;
-  preserveFormatting?: boolean; // optional, default true
-  ignoreTags?: string[]; // optional tags to keep intact
-  wrapLength?: number; // max chars per line
-  wrapWords?: number; // max words per line
+  preserveFormatting?: boolean;
+  ignoreTags?: string[];
+  wrapLength?: number;
+  wrapWords?: number;
 }
 
 /**
