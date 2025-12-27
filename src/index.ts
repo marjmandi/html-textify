@@ -42,15 +42,17 @@ export function textify({
 }: TextifyOptions): string {
   if (!html) return '';
 
+  let output = html;
+
   // Strip or preserve HTML formatting
   if (preserveFormatting) {
-    html = preserveFormat({ html, ignoreTags });
+    output = preserveFormat({ html: output, ignoreTags });
   } else {
     if (ignoreTags.length === 0) {
-      html = html.replace(/<[^>]+>/g, '').trim();
+      output = output.replace(/<[^>]+>/g, '').trim();
     } else {
       const IG = new Set(ignoreTags.map((t) => t.toLowerCase()));
-      html = html
+      output = output
         .replace(/<\/?([a-z][a-z0-9-]*)\b[^>]*>/gi, (match, tag) =>
           IG.has(tag.toLowerCase()) ? match : ''
         )
@@ -60,10 +62,10 @@ export function textify({
 
   // Wrap output text (word-based wrapping takes priority)
   if (wrapWords && wrapWords > 0) {
-    html = wrapByWords(html, wrapWords);
+    output = wrapByWords(output, wrapWords);
   } else if (wrapLength && wrapLength > 0) {
-    html = wrapByLength(html, wrapLength);
+    output = wrapByLength(output, wrapLength);
   }
 
-  return html;
+  return output;
 }
