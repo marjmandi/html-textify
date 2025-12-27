@@ -9,7 +9,7 @@ interface PreserveFormatOptions {
  * - Converts `<br>` to newline.
  * - Wraps bold (`<b>`, `<strong>`) in `**`.
  * - Wraps italic (`<i>`, `<em>`) in `*`.
- * - Converts links `<a href="...">text</a>` to `text (url)`.
+ * - Converts links `<a href="...">text</a>` to `[text] (url)`.
  * - Formats lists (`<ol>`, `<ul>`) and list items.
  * - Formats blockquotes (`<blockquote>`) with `> ` prefix.
  * - Converts tables to tab-delimited rows.
