@@ -105,6 +105,11 @@ describe('preserveFormat', () => {
     );
   });
 
+  it('should handle nested tags', () => {
+    const html = '<b><i>text</i></b>';
+    expect(preserveFormat({ html })).toBe('***text***');
+  });
+
   it('should handle complex nested content', () => {
     const html = `<h1>Main Heading</h1>
     <p>Paragraph with <b>bold</b> and <i>italic</i> text</p>
