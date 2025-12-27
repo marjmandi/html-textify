@@ -10,6 +10,9 @@
  * // => "one two\nthree four\nfive"
  */
 export function wrapByWords(text: string, count: number): string {
+  if (count <= 0) {
+    throw new Error('wrap count must be greater than 0');
+  }
   const words = text.trim().split(/\s+/);
   const lines: string[] = [];
 
