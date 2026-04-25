@@ -2,12 +2,15 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "declaration": true,
+    "rootDir": "src",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    // TODO: remove once tsup adds TypeScript 6 support (https://github.com/egoist/tsup/issues)
+    "ignoreDeprecations": "6.0",
     "types": ["jest", "node"]
   },
   "include": ["src"]
