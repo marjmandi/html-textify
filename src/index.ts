@@ -1,4 +1,5 @@
 import { preserveFormat } from './utils/preserveFormat';
+import { stripNonContent } from './utils/stripNonContent';
 import { wrapByLength } from './utils/wrapByLength';
 import { wrapByWords } from './utils/wrapByWords';
 
@@ -42,7 +43,8 @@ export function textify({
 }: TextifyOptions): string {
   if (!html) return '';
 
-  let output = html;
+  // Remove elements whose contents must never reach the output
+  let output = stripNonContent(html, ignoreTags);
 
   // Strip or preserve HTML formatting
   if (preserveFormatting) {

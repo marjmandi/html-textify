@@ -6,6 +6,26 @@ describe('textify', () => {
     expect(textify({ html: null as unknown as string })).toBe('');
   });
 
+  test('removes script and style content when preserving formatting', () => {
+    const html = '<script>var a = 1;</script><style>.a{}</style><p>Hi</p>';
+    expect(textify({ html })).toBe('Hi');
+  });
+
+  test('removes script and style content when stripping formatting', () => {
+    const html = '<script>var a = 1;</script><style>.a{}</style><p>Hi</p>';
+    expect(textify({ html, preserveFormatting: false })).toBe('Hi');
+  });
+
+  test('keeps script element when listed in ignoreTags', () => {
+    const html = '<script>var a = 1;</script><p>Hi</p>';
+    const result = textify({
+      html,
+      preserveFormatting: false,
+      ignoreTags: ['script'],
+    });
+    expect(result).toBe('<script>var a = 1;</script>Hi');
+  });
+
   test('strips all tags except ignored ones', () => {
     const html =
       '<p>Paragraph <b><mark>bold</mark></b><foo /> <i>italic</i><foo/></p>';
