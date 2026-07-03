@@ -12,6 +12,7 @@ Convert HTML into plain text while optionally preserving formatting and keeping 
 - Wrap output by word count or character length
 - Handles self-closing tags and nested content
 - Strips unknown tags and decodes common HTML entities (`&nbsp;`, `&amp;`, `&lt;`, `&gt;`)
+- Removes non-content elements (`<script>`, `<style>`, `<head>`, `<template>`, `<noscript>`) together with their contents
 
 ## Installation
 
